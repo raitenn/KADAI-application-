@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers3</title>
+    <%= csrf_meta_tags %>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+
+
+
+  <body>
+
+  	<nav class="navbar navbar-default">
+    <div class="container">
+        <!-- 2.ヘッダ情報 -->
+        <div class="navbar-header">
+            <a class="navbar-brand">B o o k e r s</a>
+        </div>
+        <% if user_signed_in? %>
+        <!-- 3.リストの配置 -->
+        <ul class="nav navbar-nav">
+            <li><%= link_to home_mypage_path do %>
+                    <i class="fas fa-home">HOME</i>
+                <% end %>
+            </li> 
+            <li><%=link_to books_path do %>
+                <i class="fas fa-book">Books一覧</i>
+                <% end %>
+            </li>
+            <li><%=link_to users_path do %>
+                <i class="fas fa-user">Users一覧</i>
+            <% end %>
+        </li>
+            <li><%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt">ログアウト</i>
+            <% end %>
+            </li>
+        </ul>
+        <% else %>
+        <ul class="nav navbar-nav">
+            <li><%=link_to root_path do %>
+                <i class="fas fa-desktop">トップ</i>
+                <% end %>
+            </li>
+            <li><%=link_to home_abaut_path do %>
+                <i class="fas fa-smile">アバウト</i>
+                <% end %>
+            </li>
+            <li><%=link_to new_user_registration_path do %>
+                <i class="fas fa-user-plus">サイドアップ</i>
+                <% end %>
+            </li>
+            <li><%= link_to user_session_path do %>
+                <i class="fas fa-sign-in-alt">ログイン</i>
+                <% end %>
+            </li>
+        </ul>
+         <% end %>
+        
+    </div>
+</nav>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+
+
+<div class="container"> <!-- ここを追加 -->
+      <div class="row">
+             <div class="col-xs-4">
+
+            <div><h1>ユーザー</h1>
+<h2><%= current_user.name %></h2>
+<h2>Introduction<br><%= current_user.introduction %></h2>
+<%= link_to 'ユーザー編集', edit_user_path(current_user.id)%><br>
+<%= attachment_image_tag current_user, :image, 
+fallback:'no_image.jpg',format: 'jpeg', class: "img-circle profile-img",size: '100x100' %></div>
+        
+        
+
+
+
+
+
+        
+<div><h1>新規投稿</h1>
+<!-- form_for部分 -->
+
+
+             <%= form_for(@book) do |f| %>
+                <h4>タイトル</h4>
+                <%= f.text_field :title %>
+                <h4>本文</h4>
+                <%= f.text_area :body %>
+                <%= f.submit '投稿' %>
+            <% end %></div>
+</div>
+<div class="col-xs-8"> 
+    <h1>ユーザー情報一覧</h1>
+<h1>投稿一覧</h1>
+   
+            <table class="table">
+                <thead>
+                <tr>
+                    <td>image</td>
+                    <td>名前</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </thead>
+                <% @users.each do |user| %>
+                <tbody>
+            <tr>
+                    <td><%= attachment_image_tag user, :image,  fallback:'no_image.jpg',format: 'jpeg', class: "img-circle pull-left profile-img",size: '100x100' %></td>
+
+                        <td><%= user.name %></td>
+                        <td><%= link_to "show", user_path(user) %></td>
+
+                    </tr>
+                    </tbody>
+                <% end %>
+            </table>
+        </div>
+    </div>
+</div>
