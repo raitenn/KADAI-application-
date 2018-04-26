@@ -8,7 +8,7 @@ devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
   get 'home/mypage' => "books#home"
-  get 'posts/new'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 	resources :books
 	resources :users

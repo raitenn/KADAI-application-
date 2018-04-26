@@ -1,18 +1,21 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
 	def new
-  	@post = Book.new
+  	@book = Book.new
   end
 
   def create
         # ストロングパラメーターを使用
-         book = Book.new(book_params)
-         book.user_id = current_user.id
+         @book = Book.new(book_params)
+         @book.user_id = current_user.id
         # DBへ保存する
-         book.save
+        if @book.save
         # トップ画面へリダイレクト
-        redirect_to book_path(book.id)
-
+          redirect_to book_path(@book)
+        else
+          @books = Book.all
+         render 'index'
+        end
   end
 
   def index
@@ -22,9 +25,8 @@ class BooksController < ApplicationController
   end
   
   def show
-    @book = Book.find(params[:id])
-    @books = Book.new
-      @booknew = Book.new
+    @books = Book.find(params[:id])
+    @book = Book.new
       @users = User.all
 	end
 
@@ -39,7 +41,7 @@ class BooksController < ApplicationController
 	def update
 	    book = Book.find(params[:id])
 	    if 
-	    book.update(post_params)
+	    book.update(book_params)
 	    redirect_to books_path
 	    flash[:notice] = "Book was successfully update."
     	end
@@ -64,4 +66,5 @@ private
 	        params.require(:book).permit(:title, :body)
 	    end
 end
+
 

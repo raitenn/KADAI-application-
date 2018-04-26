@@ -1,23 +1,42 @@
+<div class="container"> <!-- ここを追加 -->
+      <div class="row">
+             <div class="col-xs-12">
 <h1>ユーザー編集</h1>
 <!-- form_for部分 -->
 
 
              <%= form_for(@user) do |f| %>
-                <h4>タイトル</h4>
-                <%= f.attachment_field :image %>
-                <h4>本文</h4>
-                <div class="form-group has-icon">
-        <label class="control-label sr-only" for="inputEmail">Name</label>
-        <%= f.text_field :introduction, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"introduction"%>
-        <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
-    </div>                      
-                
 
-                <h2>名前の変更</h2>
-                <div class="form-group has-icon">
-        <label class="control-label sr-only" for="inputEmail">Name</label>
-        <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"名前"%>
-        <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
+                  <% if @user.errors.any? %>
+                      <div id="error_explanation" class="alert alert-danger">
+                        <ul>
+                          <% @user.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+
+                    <h2>ユーザー画像</h2>
+                    <%= f.attachment_field :image %>
+
+
+                    <h2>名前の変更</h2>
+                    <div class="form-group has-icon">
+                    <label class="control-label sr-only" for="inputEmail">Name</label>
+                    <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"名前"%>
+                    <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
+
+                    <h4>ユーザー説明の変更</h4>
+                    <div class="form-group has-icon">
+                        <label class="control-label sr-only" for="inputEmail">Name</label>
+                        <%= f.text_field :introduction, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"introduction"%>
+                        <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
+                    </div>                      
+                
         <%= f.submit '投稿' %>
-    </div>                      
+            </div>
             <% end %>
+</div>
+</div>
+</div>

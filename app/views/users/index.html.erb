@@ -7,7 +7,7 @@
             <div><h1>ユーザー</h1>
 <h2><%= current_user.name %></h2>
 <h2>Introduction<br><%= current_user.introduction %></h2>
-<%= link_to 'ユーザー編集', edit_user_path(current_user.id)%><br>
+<button type="button" class="btn btn-primary btn-lg active"><%= link_to 'ユーザー編集', edit_user_path(current_user.id)%></button><br>
 <%= attachment_image_tag current_user, :image, 
 fallback:'no_image.jpg',format: 'jpeg', class: "img-circle profile-img",size: '100x100' %></div>
         
@@ -49,7 +49,7 @@ fallback:'no_image.jpg',format: 'jpeg', class: "img-circle profile-img",size: '1
                     <td><%= attachment_image_tag user, :image,  fallback:'no_image.jpg',format: 'jpeg', class: "img-circle pull-left profile-img",size: '100x100' %></td>
 
                         <td><%= user.name %></td>
-                        <td><%= link_to "show", user_path(user) %></td>
+                        <td><button type="button" class="btn btn-primary btn-lg active"><%= link_to "show", user_path(user) %></button></td>
 
                     </tr>
                     </tbody>

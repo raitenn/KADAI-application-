@@ -9,4 +9,9 @@ class User < ApplicationRecord
        validates :name,length: { in: 2..20 } 
        validates :introduction,length: { maximum: 50 } 
        validates :name, presence: true
+
+       def current_user?(user)
+    user == current_user
+  end
+  
 end

@@ -6,7 +6,7 @@
             <div><h1>ユーザー</h1>
 <h2><%= @user.name %></h2>
 <h2>Introduction<br><%= @user.introduction %></h2>
-<%= link_to 'ユーザー編集', edit_user_path(current_user.id)%><br>
+<button type="button" class="btn btn-primary btn-lg active"><%= link_to 'ユーザー編集', edit_user_path(current_user.id)%></button><br>
 <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', class: "img-circle profile-img" %></div>
 
 
@@ -31,27 +31,27 @@
 
 <%= flash[:notice]%>
 <div class="col-xs-8">
-<h2>Books</h2>
-<table class ="table">
-    <thead>
+            <h2>Books</h2>
+                <table class ="table">
+                    <thead>
 
-<tr>
+                    <tr>
 
-<td><h1>タイトル</h1></td>
-<%= @book.title %>
-<td><h1>本文</h1></td>
-</tr>
-</thead>
-<% @user.books.each do |book| %>
-<tbody>
-     <tr>
-	     <td><%= book.title %></td>
-	     <td><%= book.body%></td>
-	 </tr>
-    </tbody>
-	 <% end %>
-</table>
-</div>
+                        <td><h1>タイトル</h1></td>
+                        <%= @book.title %>
+                        <td><h1>本文</h1></td>
+                        </tr>
+                        </thead>
+                        <% @user.books.each do |book| %>
+                        <tbody>
+                    <tr>
+                	     <td><%= book.title %></td>
+                	     <td><%= book.body%></td>
+                	 </tr>
+                    </tbody>
+                	 <% end %>
+                </table>
+                </div>
 
 </div>
 </div>
