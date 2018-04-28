@@ -7,7 +7,7 @@
             <div><h1>ユーザー</h1>
 <h2><%= current_user.name %></h2>
 <h2>Introduction<br><%= current_user.introduction %></h2>
-<button type="button" class="btn btn-primary btn-lg active"><%= link_to 'ユーザー編集', edit_user_path(current_user.id)%></button><br>
+<button type="button" class="btn btn-primary btn-lg active"><%= link_to 'ユーザー編集', edit_user_path(current_user.id),class: "btncolor"%></button><br>
 <%= attachment_image_tag current_user, :image, 
 fallback:'no_image.jpg',format: 'jpeg', class: "img-circle profile-img",size: '100x100' %></div>
         
@@ -27,7 +27,8 @@ fallback:'no_image.jpg',format: 'jpeg', class: "img-circle profile-img",size: '1
                 <%= f.text_field :title %>
                 <h4>本文</h4>
                 <%= f.text_area :body %>
-                <%= f.submit '投稿' %>
+                <input type="submit" name="commit" value="投稿" data-disable-with="投稿" class="btn btn-primary btn-lg active">
+                
             <% end %></div>
 </div>
 <div class="col-xs-8"> 
@@ -49,7 +50,7 @@ fallback:'no_image.jpg',format: 'jpeg', class: "img-circle profile-img",size: '1
                     <td><%= attachment_image_tag user, :image,  fallback:'no_image.jpg',format: 'jpeg', class: "img-circle pull-left profile-img",size: '100x100' %></td>
 
                         <td><%= user.name %></td>
-                        <td><button type="button" class="btn btn-primary btn-lg active"><%= link_to "show", user_path(user) %></button></td>
+                        <td><button type="button" class="btn btn-primary btn-lg active"><%= link_to "show", user_path(user),class: "btncolor" %></button></td>
 
                     </tr>
                     </tbody>

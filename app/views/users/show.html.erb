@@ -6,7 +6,7 @@
             <div><h1>ユーザー</h1>
 <h2><%= @user.name %></h2>
 <h2>Introduction<br><%= @user.introduction %></h2>
-<button type="button" class="btn btn-primary btn-lg active"><%= link_to 'ユーザー編集', edit_user_path(current_user.id)%></button><br>
+<button type="button" class="btn btn-primary btn-lg active"><%= link_to 'ユーザー編集', edit_user_path(current_user.id),class: "btncolor"%></button><br>
 <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', class: "img-circle profile-img" %></div>
 
 
@@ -23,9 +23,10 @@
                 <%= f.text_field :title %>
                 <h4>本文</h4>
                 <%= f.text_area :body %>
-                <%= f.submit '投稿' %>
+                <input type="submit" name="commit" value="投稿" data-disable-with="投稿" class="btn btn-primary btn-lg active">
+               
             <% end %></div>
-</div>
+            </div>
 
 
 
@@ -53,5 +54,5 @@
                 </table>
                 </div>
 
-</div>
-</div>
+              </div>
+             </div>

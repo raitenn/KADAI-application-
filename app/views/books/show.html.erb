@@ -6,7 +6,7 @@
             <div><h1>ユーザー</h1>
 <h2><%= @books.user.name %></h2>
 <h2>Introduction<br><%= @books.user.introduction %></h2>
-<button type="button" class="btn btn-primary btn-lg active"><%= link_to 'ユーザー編集', edit_user_path(current_user.id)%></button><br>
+<button type="button" class="btn btn-primary btn-lg active"><%= link_to 'ユーザー編集', edit_user_path(current_user.id),class: "btncolor"%></button><br>
 <%= attachment_image_tag @books.user, :image, :fill, 100, 100,fallback:'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6', format: 'jpeg', class: "img-circle profile-img" %></div>
         
         
@@ -24,7 +24,8 @@
                 <%= f.text_field :title %>
                 <h4>本文</h4>
                 <%= f.text_area :body %>
-                <%= f.submit '投稿' %>
+                <input type="submit" name="commit" value="投稿" data-disable-with="投稿" class="btn btn-primary btn-lg active">
+                
             <% end %></div>
 </div>
 
@@ -41,25 +42,26 @@
                   <td><h2><%= @books.user.name %></h2></td>
                   <td><%= attachment_image_tag @books.user, :image,  fallback:'no_image.jpg',format: 'jpeg', class: "img-circle pull-left profile-img",size: '100x100' %></td>
                   <td><h1>タイトル</h1></td>
-                  <td><h2><%= @book.title %></h2></td>
+                  <td><h2><%= @books.title %></h2></td>
                   <td><h1>本文</h1></td>
-                  <td><h2><%= @book.body %></h2></td>
+                  <td><h2><%= @books.body %></h2></td>
                 </tr>
           </thead>
           </tbody>
         </table>
+        <ul>
 
 
-                  <li><button type="button" class="btn btn-primary btn-lg active"><%= link_to "戻る", books_path %></button></li>
-                  <% if @book.user == current_user %></li>
-                  <li><button type="button" class="btn btn-primary btn-lg active"><%= link_to "編集", edit_book_path(@book.id) %></button></li>
+                  <li><button type="button" class="btn btn-primary btn-lg active"><%= link_to "戻る", books_path,class: "btncolor" %></button></li>
+                  <% if @books.user == current_user %></li>
+                  <li><button type="button" class="btn btn-primary btn-lg active"><%= link_to "編集", edit_book_path(@books.id),class: "btncolor" %></button></li>
                   <% end %>
-                  <% if @book.user == current_user %>
+                  <% if @books.user == current_user %>
                   <li>
-                    <button type="button" class="btn btn-primary btn-lg active"><%= link_to "削除", book_path(@book.id), method: :delete ,"data-confirm" => "本当に削除しますか？" %></button>
+                    <button type="button" class="btn btn-primary btn-lg active"><%= link_to "削除", book_path(@books.id),class: "btncolor", method: :delete ,"data-confirm" => "本当に削除しますか？" %></button>
                   </li>
               <% end %>
-</ul>
-</div>
-</div>
-</div>
+          </ul>
+        </div>
+      </div>
+    </div>

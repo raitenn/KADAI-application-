@@ -27,16 +27,15 @@
                     <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"名前"%>
                     <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
 
-                    <h4>ユーザー説明の変更</h4>
+                    <h2>ユーザー説明の変更</h2>
                     <div class="form-group has-icon">
                         <label class="control-label sr-only" for="inputEmail">Name</label>
                         <%= f.text_field :introduction, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"introduction"%>
                         <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
                     </div>                      
-                
-        <%= f.submit '投稿' %>
+                <input type="submit" name="commit" value="投稿" data-disable-with="投稿" class="btn btn-primary btn-lg active">
             </div>
             <% end %>
-</div>
-</div>
-</div>
+           </div>
+          </div>
+         </div>
